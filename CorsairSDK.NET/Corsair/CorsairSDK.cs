@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace CorsairWrapper.Corsair
+namespace Corsair.NET.Corsair
 {
     public static class CorsairSDK
     {
@@ -62,6 +62,12 @@ namespace CorsairWrapper.Corsair
                 IntPtr ins = new IntPtr(unmanagedArray.ToInt64() + i * size);
                 mangagedArray[i] = Marshal.PtrToStructure<T>(ins);
             }
+        }
+
+        public static CorsairLedColor[] CorsairGetLedsColors(int size, CorsairLedColor[] ledsColors)
+        {
+            InternalCorsairSDK.CorsairGetLedsColors(size, ledsColors);
+            return ledsColors;
         }
     }
 }

@@ -1226,9 +1226,22 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
+      "Corsair.NET/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/Corsair.NET.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Corsair.NET.dll": {}
+        }
+      },
       "CorsairWrapper/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Corsair.NET": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/CorsairWrapper.dll": {}
         },
@@ -4623,6 +4636,11 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "Corsair.NET/1.0.0": {
+      "type": "project",
+      "path": "../CorsairSDK.NET/Corsair.NET.csproj",
+      "msbuildProject": "../CorsairSDK.NET/Corsair.NET.csproj"
     },
     "CorsairWrapper/1.0.0": {
       "type": "project",

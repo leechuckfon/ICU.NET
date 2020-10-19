@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CorsairWrapper.Corsair
+namespace Corsair.NET.Corsair
 {
     public enum CorsairLedId : int
     {

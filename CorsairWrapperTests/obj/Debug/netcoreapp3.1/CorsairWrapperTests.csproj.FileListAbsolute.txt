@@ -98,3 +98,5 @@ C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapperTests\obj\Debug\netcore
 C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapperTests\obj\Debug\netcoreapp3.1\CorsairWrapperTests.dll
 C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapperTests\obj\Debug\netcoreapp3.1\CorsairWrapperTests.pdb
 C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapperTests\obj\Debug\netcoreapp3.1\CorsairWrapperTests.genruntimeconfig.cache
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapperTests\bin\Debug\netcoreapp3.1\Corsair.NET.dll
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapperTests\bin\Debug\netcoreapp3.1\Corsair.NET.pdb

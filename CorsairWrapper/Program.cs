@@ -1,4 +1,4 @@
-﻿using CorsairWrapper.Corsair;
+﻿using Corsair.NET.Corsair;
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -9,13 +9,13 @@ namespace CorsairWrapper
     {
         static void Main(string[] args)
         {
+            SetLedsColorsCallback test = new SetLedsColorsCallback(OnColorsSet);
             var details = CorsairSDK.CorsairPerformProtocolHandshake();
             var ledPositions = CorsairSDK.CorsairGetLedPositionsByDeviceIndex(0);
-            var ledColors = ledPositions.pLedPosition.Select(x => new CorsairLedColor() { ledId = x.ledId, b = 255, g = 0, r = 0 }).ToArray();
             var ledTest = ledPositions.pLedPosition.Select(x => new CorsairLedColor() { ledId = x.ledId, b = 0, g = 0, r = 0 }).ToArray();
-            SetLedsColorsCallback test = new SetLedsColorsCallback(OnColorsSet);
-            var worked = CorsairSDK.CorsairSetLedsColorsAsync(ledPositions.numberOfLed, ledColors, test);
             var colors = CorsairSDK.CorsairGetLedsColorsByDeviceIndex(0, ledPositions.numberOfLed, ledTest);
+            var ledColors = ledPositions.pLedPosition.Select(x => new CorsairLedColor() { ledId = x.ledId, b = 255, g = 0, r = 0 }).ToArray();
+            var worked = CorsairSDK.CorsairSetLedsColorsAsync(ledPositions.numberOfLed, ledColors, test);
 
             Console.ReadLine();
 

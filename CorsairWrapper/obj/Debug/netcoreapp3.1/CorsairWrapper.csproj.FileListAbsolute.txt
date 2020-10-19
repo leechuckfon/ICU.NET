@@ -12,3 +12,6 @@ C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.
 C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.dll
 C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.pdb
 C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.genruntimeconfig.cache
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\Corsair.NET.dll
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\Corsair.NET.pdb
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.csproj.CopyComplete
