@@ -1,0 +1,14 @@
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.csprojAssemblyReference.cache
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.AssemblyInfoInputs.cache
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.AssemblyInfo.cs
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.csproj.CoreCompileInputs.cache
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CorsairWrapper.exe
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CUESDK.x64_2017.dll
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CorsairWrapper.deps.json
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CorsairWrapper.runtimeconfig.json
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CorsairWrapper.runtimeconfig.dev.json
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CorsairWrapper.dll
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\bin\Debug\netcoreapp3.1\CorsairWrapper.pdb
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.dll
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.pdb
+C:\Users\chuck\source\repos\CorsairWrapper\CorsairWrapper\obj\Debug\netcoreapp3.1\CorsairWrapper.genruntimeconfig.cache

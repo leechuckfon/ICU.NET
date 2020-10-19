@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsairWrapper", "CorsairWrapper\CorsairWrapper.csproj", "{DC6C24C7-D75C-4859-95C9-0DC84C26292D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorsairWrapperTests", "CorsairWrapperTests\CorsairWrapperTests.csproj", "{2A5555F1-2153-48E8-84BE-159824C8502E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC6C24C7-D75C-4859-95C9-0DC84C26292D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC6C24C7-D75C-4859-95C9-0DC84C26292D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC6C24C7-D75C-4859-95C9-0DC84C26292D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC6C24C7-D75C-4859-95C9-0DC84C26292D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5555F1-2153-48E8-84BE-159824C8502E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5555F1-2153-48E8-84BE-159824C8502E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5555F1-2153-48E8-84BE-159824C8502E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5555F1-2153-48E8-84BE-159824C8502E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3DECC1B0-EAAF-4460-A3FA-3A4A98520F00}
+	EndGlobalSection
+EndGlobal
