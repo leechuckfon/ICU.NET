@@ -36,6 +36,18 @@ namespace Corsair.NET.Corsair
             };
         }
 
+        public static CorsairLedPositions CorsairGetLedPositions()
+        {
+            var pointer = InternalCorsairSDK.CorsairGetLedPositions();
+            var demarshalledInfo = Marshal.PtrToStructure<InternalCorsairLedPositions>(pointer);
+            MarshalUnmananagedArray2Struct<CorsairLedPosition>(demarshalledInfo.pLedPosition, demarshalledInfo.numberOfLed, out var array);
+            return new CorsairLedPositions
+            {
+                numberOfLed = demarshalledInfo.numberOfLed,
+                pLedPosition = array
+            };
+        }
+
         public static bool CorsairSetLedsColors(int size, CorsairLedColor[] ledsColors)
         {
             return InternalCorsairSDK.CorsairSetLedsColors(size, ledsColors);
@@ -68,6 +80,51 @@ namespace Corsair.NET.Corsair
         {
             InternalCorsairSDK.CorsairGetLedsColors(size, ledsColors);
             return ledsColors;
+        }
+
+        public static bool CorsairUnsubscribeFromEvents()
+        {
+            return InternalCorsairSDK.CorsairUnsubscribeFromEvents();
+        }
+        public static bool CorsairSubscribeForEvents(CorsairEventHandler onEvent, IntPtr context)
+        {
+            return InternalCorsairSDK.CorsairSubscribeForEvents(onEvent, IntPtr.Zero);
+        }
+        public static bool CorsairRegisterKeypressCallback(KeyPressedCallback callback, IntPtr context)
+        {
+            return InternalCorsairSDK.CorsairRegisterKeypressCallback(callback, IntPtr.Zero);
+        }
+        public static bool CorsairSetLayerPriority(int priority)
+        {
+            return InternalCorsairSDK.CorsairSetLayerPriority(priority);
+        }
+        public static bool CorsairReleaseControl(CorsairAccessMode accessMode)
+        {
+            return InternalCorsairSDK.CorsairReleaseControl(accessMode);
+        }
+        public static CorsairError CorsairGetLastError()
+        {
+            return InternalCorsairSDK.CorsairGetLastError();
+        }
+        public static bool CorsairRequestControl(CorsairAccessMode accessMode)
+        {
+            return InternalCorsairSDK.CorsairRequestControl(accessMode);
+        }
+        public static CorsairLedId CorsairGetLedIdForKeyName(char keyName)
+        {
+            return InternalCorsairSDK.CorsairGetLedIdForKeyName(keyName);
+        }
+        public static bool CorsairSetLedsColorsBufferByDeviceIndex(int deviceIndex, int size, CorsairLedColor[] ledsColors)
+        {
+            return InternalCorsairSDK.CorsairSetLedsColorsBufferByDeviceIndex(deviceIndex, size, ledsColors);
+        }
+        public static bool CorsairSetLedsColorsFlushBuffer()
+        {
+            return InternalCorsairSDK.CorsairSetLedsColorsFlushBuffer();
+        }
+        public static bool CorsairSetLedsColorsFlushBufferAsync(SetLedsColorsCallback callback)
+        {
+            return InternalCorsairSDK.CorsairSetLedsColorsFlushBufferAsync(callback, IntPtr.Zero);
         }
     }
 }

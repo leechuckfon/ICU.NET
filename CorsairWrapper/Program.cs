@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace CorsairWrapper
 {
@@ -12,19 +13,39 @@ namespace CorsairWrapper
             SetLedsColorsCallback test = new SetLedsColorsCallback(OnColorsSet);
             var details = CorsairSDK.CorsairPerformProtocolHandshake();
             var ledPositions = CorsairSDK.CorsairGetLedPositionsByDeviceIndex(0);
-            var ledTest = ledPositions.pLedPosition.Select(x => new CorsairLedColor() { ledId = x.ledId, b = 0, g = 0, r = 0 }).ToArray();
-            var colors = CorsairSDK.CorsairGetLedsColorsByDeviceIndex(0, ledPositions.numberOfLed, ledTest);
-            var ledColors = ledPositions.pLedPosition.Select(x => new CorsairLedColor() { ledId = x.ledId, b = 255, g = 0, r = 0 }).ToArray();
-            var worked = CorsairSDK.CorsairSetLedsColorsAsync(ledPositions.numberOfLed, ledColors, test);
+            var ledTest = ledPositions.pLedPosition.OrderBy(x => x.left).Select(x => new CorsairLedColor() { ledId = x.ledId, b = 0, g = 0, r = 0 }).ToArray();
+            var color = ColorCycle.BLUE;
+            while (true)
+            {
 
-            Console.ReadLine();
+                for (int i=0; i < ledTest.Length; i++)
+                {
+                    switch ((int)color)
+                    {
+                        case 0: ledTest[i].b = 255; ledTest[i].r = 0; ledTest[i].g = 0; break;
+                        case 1: ledTest[i].r = 255; ledTest[i].b = 0; ledTest[i].g = 0; break;
+                        case 2: ledTest[i].g = 255; ledTest[i].b = 0; ledTest[i].r = 0; break;
+                    }
+                    var worked = CorsairSDK.CorsairSetLedsColorsAsync(ledPositions.numberOfLed, ledTest, (x,y,z) => {
+                        Console.WriteLine("Callback Called");
+                    });
+                    Thread.Sleep(5);
+                }
+
+                if ((int)color == 2)
+                {
+                    color = (ColorCycle)0;
+                } else
+                {
+                    color++;
+                }
+            }
 
         }
 
-        public static CorsairError OnColorsSet(IntPtr context, bool result)
+        public static void OnColorsSet(IntPtr context, bool result, CorsairError error)
         {
             Console.WriteLine("Callback Called");
-            return CorsairError.CE_Success;
         }
 
         public static void MarshalUnmananagedArray2Struct<T>(IntPtr unmanagedArray, int length, out T[] mangagedArray)
@@ -38,5 +59,12 @@ namespace CorsairWrapper
                 mangagedArray[i] = Marshal.PtrToStructure<T>(ins);
             }
         }
+    }
+
+    public enum ColorCycle: int
+    {
+        BLUE = 0,
+        RED = 1,
+        GREEN = 2
     }
 }
