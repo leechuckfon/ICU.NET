@@ -48,5 +48,8 @@ namespace Corsair.NET.Corsair
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairSetLedColorsFlushBufferAsync(CorsairAsyncCallback callback, IntPtr context);
+
+        [DllImport(DLL_NAME)]
+        public static extern CorsairError CorsairGetLedColors(string deviceId, int size, CorsairLedColor[] ledColors);
     }
 }
