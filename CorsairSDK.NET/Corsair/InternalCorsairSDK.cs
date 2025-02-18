@@ -11,20 +11,21 @@ namespace Corsair.NET.Corsair
     public delegate void CorsairEventHandler(IntPtr context, CorsairEvent corsairEvent);
     internal class InternalCorsairSDK
     {
-        internal const string DLL_NAME = "CUESDK.x64_2019";
+        internal const string DLL_NAME = "iCUESDK.x64_2019";
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairConnect(CorsairSessionStateChangedHandler onStateChanged, IntPtr context);
 
         [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairGetSessionDetails(CorsairSessionDetails details);
+        public static extern CorsairError CorsairGetSessionDetails([Out] CorsairSessionDetails details);
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairDisconnect();
 
         [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairGetDevices(CorsairDeviceFilter filter, int sizeMax,[In, Out] CorsairDeviceInfo devices, int size);
+        public static extern CorsairError CorsairGetDevices(ref CorsairDeviceFilter filter, uint sizeMax, [In, Out] CorsairDeviceInfo[] devices, ref int size);
 
+        // UNTESTED
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairGetDeviceInfo(string deviceId, CorsairDeviceInfo deviceInfo);
 
@@ -41,7 +42,7 @@ namespace Corsair.NET.Corsair
         public static extern CorsairError CorsairConfigureKeyEvent(string deviceId, CorsairKeyEventConfiguration config);
 
         [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairSetLedColors(string deviceId, int size, CorsairLedColor[] ledColors);
+        public static extern CorsairError CorsairSetLedColors(string deviceId, int size,[In, Out] CorsairLedColor[] ledColors);
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairSetLedColorsBuffer(string deviceId, int size, CorsairLedColor[] ledColors);

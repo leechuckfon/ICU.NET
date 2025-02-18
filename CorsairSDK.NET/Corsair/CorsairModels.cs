@@ -121,6 +121,7 @@ namespace Corsair.NET.Corsair
 
     public struct CorsairDeviceInfo    // contains information about device.
     {
+
         public CorsairDeviceType type;               // enum describing device type.
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
         public string id;               // enum describing device type.
@@ -130,6 +131,7 @@ namespace Corsair.NET.Corsair
         public int ledsCount;                        // number of controllable LEDs on the device.
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)]
         public string serial;             // null-terminated string that contains unique device identifier that uniquely identifies device at least within session
+
     };
 
     public struct CorsairLedPosition   // contains led id and position of led rectangle.Most of the keys are rectangular.In case if key is not rectangular(like Enter in ISO / UK layout) it returns the smallest rectangle that fully contains the key.
@@ -172,8 +174,8 @@ namespace Corsair.NET.Corsair
 
     public struct CorsairSessionStateChanged // contains information about session state and client/server versions
     {
-        CorsairSessionState state;       // new session state which SDK client has been transitioned to
-        CorsairSessionDetails details;   // information about client/server versions
+        public CorsairSessionState state;       // new session state which SDK client has been transitioned to
+        public CorsairSessionDetails details;   // information about client/server versions
     }
 
     public enum CorsairSessionState // contains a list of all possible session states
@@ -189,26 +191,26 @@ namespace Corsair.NET.Corsair
 
     public struct CorsairSessionDetails // contains information about SDK and iCUE versions
     {
-        CorsairVersion clientVersion;       // version of SDK client (like {4,0,1}). Always contains valid value even if there was no iCUE found. Must comply with the semantic versioning rules.
-        CorsairVersion serverVersion;       // version of SDK server (like {4,0,1}) or empty struct ({0,0,0}) if the iCUE was not found. Must comply with the semantic versioning rules.
-        CorsairVersion serverHostVersion;   // version of iCUE (like {3,33,100}) or empty struct ({0,0,0}) if the iCUE was not found.
+        public CorsairVersion clientVersion;       // version of SDK client (like {4,0,1}). Always contains valid value even if there was no iCUE found. Must comply with the semantic versioning rules.
+        public CorsairVersion serverVersion;       // version of SDK server (like {4,0,1}) or empty struct ({0,0,0}) if the iCUE was not found. Must comply with the semantic versioning rules.
+        public CorsairVersion serverHostVersion;   // version of iCUE (like {3,33,100}) or empty struct ({0,0,0}) if the iCUE was not found.
     }
 
     public struct CorsairVersion // contains information about version that consists of three components
     {
-        int major;
-        int minor;
-        int patch;
+        public int major;
+        public int minor;
+        public int patch;
     }
 
     public struct CorsairDeviceFilter // contains device search filter
     {
-        int deviceTypeMask;  // mask that describes device types, formed as logical “or” of CorsairDeviceType enum values
+        public uint deviceTypeMask;  // mask that describes device types, formed as logical “or” of CorsairDeviceType enum values
     }
 
     public struct CorsairKeyEventConfiguration // contains information about key event configuration
     {
-        CorsairMacroKeyId keyId;  // G, M or S key
-        bool isIntercepted;       // flag that defines how key event should behave. If true then iCUE will pass the event to an active exclusive SDK client and stop passing it to the rest SDK clients. If false then iCUE will resume sending it to all SDK clients
+        public CorsairMacroKeyId keyId;  // G, M or S key
+        public bool isIntercepted;       // flag that defines how key event should behave. If true then iCUE will pass the event to an active exclusive SDK client and stop passing it to the rest SDK clients. If false then iCUE will resume sending it to all SDK clients
     }
 }
