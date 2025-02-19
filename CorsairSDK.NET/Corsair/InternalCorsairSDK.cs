@@ -25,24 +25,29 @@ namespace Corsair.NET.Corsair
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairGetDevices(ref CorsairDeviceFilter filter, uint sizeMax, [In, Out] CorsairDeviceInfo[] devices, ref int size);
 
-        // UNTESTED
         [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairGetDeviceInfo(string deviceId, CorsairDeviceInfo deviceInfo);
+        public static extern CorsairError CorsairGetLedPositions(string deviceId, uint sizeMax,[In, Out] CorsairLedPosition[] ledPositions,ref int size);
 
         [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairGetLedPositions(string deviceId, int sizeMax, CorsairLedPosition[] ledPositions,int size);
+        public static extern CorsairError CorsairGetLedColors(string deviceId, uint size,[In,Out] CorsairLedColor[] ledColors);
+
+        [DllImport(DLL_NAME)]
+        public static extern CorsairError CorsairSetLedColors(string deviceId, int size, [In, Out] CorsairLedColor[] ledColors);
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairSubscribeForEvents(CorsairEventHandler onEvent, IntPtr context);
 
         [DllImport(DLL_NAME)]
+        public static extern CorsairError CorsairConfigureKeyEvent(string deviceId, ref CorsairKeyEventConfiguration config);
+
+        // UNTESTED
+        [DllImport(DLL_NAME)]
+        public static extern CorsairError CorsairGetDeviceInfo(string deviceId, CorsairDeviceInfo deviceInfo);
+
+
+        [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairUnsubscribeFromEvents();
 
-        [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairConfigureKeyEvent(string deviceId, CorsairKeyEventConfiguration config);
-
-        [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairSetLedColors(string deviceId, int size,[In, Out] CorsairLedColor[] ledColors);
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairSetLedColorsBuffer(string deviceId, int size, CorsairLedColor[] ledColors);
@@ -50,7 +55,5 @@ namespace Corsair.NET.Corsair
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairSetLedColorsFlushBufferAsync(CorsairAsyncCallback callback, IntPtr context);
 
-        [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairGetLedColors(string deviceId, int size, CorsairLedColor[] ledColors);
     }
 }
