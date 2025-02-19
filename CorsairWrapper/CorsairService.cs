@@ -44,11 +44,11 @@ namespace CorsairWrapper
 
             while (currentState != CorsairSessionState.CSS_Connected)
             {
-
+                await Task.Delay(100);
             }
 
 
-            var response = CorsairSDK.CorsairGetDeviceCount();
+            var response = CorsairSDK.GetDevices();
 
             var main = response.FirstOrDefault();
 
@@ -61,7 +61,7 @@ namespace CorsairWrapper
                 _logger.LogInformation($"{pos.ledId}: {pos.cx} {pos.cy}");
             }
 
-            var columns = positions.Select(x => x.cx).Distinct();
+            var columns = positions.Select(x => x.cx).Distinct();`                                                                                                                                                                                                  
             var rows = positions.Select(x => x.cy).Distinct();
 
             var colors = CorsairSDK.CorsairGetLedColors(main.id, positions.ToArray());
@@ -110,13 +110,19 @@ namespace CorsairWrapper
 
         public static CorsairLedColor[] GetNewColorArray(ColorCycle cycle, CorsairLedColor[] oldColors, int count, CorsairLedId_Keyboard key)
         {
+            Random r = new Random();
+            var limit = 255;
+            var a = r.Next(limit);
+            var b = r.Next(limit - a);
+            var c = r.Next(limit - a - b);
 
-            switch(cycle)
+
+            switch (cycle)
             {
                 case ColorCycle.Blue: return oldColors.Where(x => x.id == (uint)key).Select(x => new CorsairLedColor { b = 255, id = x.id, a = 255 }).ToArray();
                 case ColorCycle.Red: return oldColors.Where(x => x.id == (uint)key).Select(x => new CorsairLedColor { r = 255, id = x.id, a = 255 }).ToArray();
                 case ColorCycle.Green: return oldColors.Where(x => x.id == (uint)key).Select(x => new CorsairLedColor { g = 255, id = x.id, a = 255 }).ToArray();
-                default: return oldColors;
+                default: return oldColors.Where(x => x.id == (uint)key).Select(x => new CorsairLedColor { b = (byte)a, g = (byte)b, r = (byte)b, id = x.id, a = 255 }).ToArray();
             }
 
         }

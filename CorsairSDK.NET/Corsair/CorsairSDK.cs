@@ -29,7 +29,7 @@ namespace Corsair.NET.Corsair
         }
 
 
-        public static IEnumerable<CorsairDeviceInfo> CorsairGetDeviceCount()
+        public static IEnumerable<CorsairDeviceInfo> GetDevices()
         {
             var filter = new CorsairDeviceFilter
             {
