@@ -31,25 +31,17 @@ namespace Corsair.NET.Corsair
 
         public static IEnumerable<CorsairDeviceInfo> GetDevices()
         {
-            //var filter = new CorsairDeviceFilter
-            //{
-            //    deviceTypeMask = (uint)CorsairDeviceType.CDT_All
-            //};
+            var filter = new CorsairDeviceFilter
+            {
+                deviceTypeMask = (uint)CorsairDeviceType.CDT_All
+            };
 
             var devices = new CorsairDeviceInfo[CORSAIR_DEVICE_COUNT_MAX];
-            //int size = default;
-
-            IntPtr size = default;
-            IntPtr filter= default;
-
-            //Marshal.StructureToPtr(filter, filterPointer, true);
+            int size = default;
 
             var response = InternalCorsairSDK.CorsairGetDevices(ref filter, CORSAIR_DEVICE_COUNT_MAX, devices, ref size);
 
-            var intFromMemory = Marshal.PtrToStructure<Int32>(size);
-            var filterFromMemory = Marshal.PtrToStructure<CorsairDeviceFilter>(size);
-
-            return devices.Take(intFromMemory);
+            return devices.Take(size);
         }
 
         public static CorsairError CorsairSubscribeForEvents(CorsairEventHandler eventHandler)
