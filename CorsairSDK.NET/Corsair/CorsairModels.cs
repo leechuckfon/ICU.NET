@@ -158,17 +158,17 @@ namespace Corsair.NET.Corsair
         CDT_All = 0xFFFFFFFF            // for all devices
     };
 
-    public enum CorsairError // contains shared list of all errors which could happen during calling of Corsair* functions
+    public enum CorsairError
     {
-        CE_Success = 0,               // if previously called function completed successfully
-        CE_NotConnected = 1,          // if iCUE is not running or was shut down or third-party control is disabled in iCUE settings (runtime error), or if developer did not call CorsairConnect after calling CorsairDisconnect or on app start (developer error)
-        CE_NoControl = 2,             // if some other client has or took over exclusive control (runtime error)
-        CE_IncompatibleProtocol = 3,  // if developer is calling the function that is not supported by the server (either because protocol has broken by server or client or because the function is new and server is too old. Check CorsairSessionDetails for details) (developer error)
-        CE_InvalidArguments = 4,      // if developer supplied invalid arguments to the function (for specifics look at function descriptions) (developer error)
-        CE_InvalidOperation = 5,      // if developer is calling the function that is not allowed due to current state (reading improper properties from device, or setting callback when it has already been set) (developer error)
-        CE_DeviceNotFound = 6,        // if invalid device id has been supplied as an argument to the function (when device id refers to disconnected device) (runtime error)
-        CE_NotAllowed = 7             // if specific functionality (key interception) is disabled in iCUE settings (runtime error)
-    };
+        CE_Success = 0,
+        CE_NotConnected = 1,
+        CE_NoControl = 2,
+        CE_IncompatibleProtocol = 3,
+        CE_InvalidArguments = 4,
+        CE_InvalidOperation = 5,
+        CE_DeviceNotFound = 6,
+        CE_NotAllowed = 7
+    }
 
     public enum CorsairPhysicalLayout  // contains list of available physical layouts for keyboards.
     {
@@ -268,7 +268,7 @@ namespace Corsair.NET.Corsair
 
     };
 
-    public struct CorsairLedPosition   // contains led id and position of led rectangle.Most of the keys are rectangular.In case if key is not rectangular(like Enter in ISO / UK layout) it returns the smallest rectangle that fully contains the key.
+    public struct CorsairLedPosition   
     {
         public uint ledId;             // identifier of led.
         public double cx;

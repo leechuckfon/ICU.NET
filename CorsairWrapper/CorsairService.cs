@@ -61,7 +61,7 @@ namespace CorsairWrapper
                 _logger.LogInformation($"{pos.ledId}: {pos.cx} {pos.cy}");
             }
 
-            var columns = positions.Select(x => x.cx).Distinct();`                                                                                                                                                                                                  
+            var columns = positions.Select(x => x.cx).Distinct();                                                                                                                                                                                                  
             var rows = positions.Select(x => x.cy).Distinct();
 
             var colors = CorsairSDK.CorsairGetLedColors(main.id, positions.ToArray());

@@ -16,6 +16,8 @@ namespace Corsair.NET.Corsair
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairConnect(CorsairSessionStateChangedHandler onStateChanged, IntPtr context);
 
+    }
+
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairGetSessionDetails([Out] CorsairSessionDetails details);
 
@@ -23,7 +25,7 @@ namespace Corsair.NET.Corsair
         public static extern CorsairError CorsairDisconnect();
 
         [DllImport(DLL_NAME)]
-        public static extern CorsairError CorsairGetDevices(ref CorsairDeviceFilter filter, uint sizeMax, [In, Out] CorsairDeviceInfo[] devices, ref int size);
+        public static extern CorsairError CorsairGetDevices(ref IntPtr filter, uint sizeMax, [In, Out] CorsairDeviceInfo[] devices, ref IntPtr size);
 
         [DllImport(DLL_NAME)]
         public static extern CorsairError CorsairGetLedPositions(string deviceId, uint sizeMax,[In, Out] CorsairLedPosition[] ledPositions,ref int size);
